@@ -24,19 +24,29 @@ with ads1 as (
     
         {{ dbt_utils.surrogate_key('i.date_day', 'i.ad_id') }} as id,
         i.*,
-        coalesce(creatives.mg_fbaid, creatives.fbaid) as fbaid,
+        adsets.adset_id,
+        campaigns.campaign_id,
+        adsets.account_id,
+        ads.fbaid,
         ads.unique_id as ad_unique_id,
+
+        ads.utm_source,
+        ads.utm_medium,
+        ads.utm_campaign,
+        ads.utm_content,
+        ads.utm_term,
+
         ads.name as ad_name,
         campaigns.name as campaign_name,
         adsets.name as adset_name
 
     from insights1 as i
-    left outer join ads1 as ads
+    left join ads1 as ads
         on i.ad_id = ads.ad_id
         and i.date_day >= date_trunc('day', ads.effective_from)::date
         and (i.date_day < date_trunc('day', ads.effective_to)::date or ads.effective_to is null)
-    left outer join campaigns1 as campaigns on campaigns.campaign_id = i.campaign_id
-    left outer join adsets1 as adsets on adsets.adset_id = i.adset_id
+    left join adsets1 as adsets on adsets.adset_id = ads.adset_id
+    left join campaigns1 as campaigns on campaigns.campaign_id = adsets.campaign_id
 
 )
 

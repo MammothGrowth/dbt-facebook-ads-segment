@@ -10,4 +10,5 @@ data-paths: ["data"]       # load CSVs from this directory with `dbt seed`
 
 models:
   facebook_ads:
-    enabled: true
+      vars:
+        fbaid: fbaid    #value of url_parameter that contains the adid
