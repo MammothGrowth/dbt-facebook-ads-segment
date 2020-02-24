@@ -1,5 +1,5 @@
 {{ config(
-    materialized="ephemerial"
+    materialized="ephemeral"
 ) }}
 
 with ads_xf_ads as (

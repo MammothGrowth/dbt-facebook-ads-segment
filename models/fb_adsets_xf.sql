@@ -1,5 +1,5 @@
 {{ config(
-    materialized="ephemerial"
+    materialized="ephemeral"
 ) }}
 
 {% set partition_clause = "partition by adset_id order by effective_status rows
