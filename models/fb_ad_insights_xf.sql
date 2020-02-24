@@ -1,5 +1,5 @@
 {{ config(
-    materialized="ephimeral"
+    materialized="ephemephemerialeral"
 ) }}
 
 with ads1 as (
