@@ -26,6 +26,8 @@ fb_keyword_performance_agg as (
         campaign_name,
         'facebook ads' as platform,
         sum(clicks) as clicks,
+        sum(unique_clicks) as unique_clicks,
+        sum(link_clicks) as link_clicks,
         sum(impressions) as impressions,
         sum(spend) as spend
         
