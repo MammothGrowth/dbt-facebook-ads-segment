@@ -13,6 +13,7 @@ fb_keyword_performance_agg as (
     select 
     
         date_day as campaign_date,
+        account_id,
         adset_id as ad_group_id,
         ad_id,
         adset_name as ad_group_name,
@@ -32,7 +33,7 @@ fb_keyword_performance_agg as (
         sum(spend) as spend
         
     from fb_keyword_performance
-    {{ dbt_utils.group_by(12) }}
+    {{ dbt_utils.group_by(13) }}
     
 )
 
