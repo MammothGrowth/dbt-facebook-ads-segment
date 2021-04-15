@@ -1,5 +1,10 @@
 name: 'facebook_ads'
 version: '1.0'
+config-version: 2
+
+vars:
+  facebook_ads:
+    fbaid: fbaid    #value of url_parameter that contains the adid
 
 source-paths: ["models"]   # paths with source code to compile
 analysis-paths: ["analysis"] # path with analysis files which are compiled, but not run
@@ -8,7 +13,3 @@ clean-targets: ["target"]  # directories removed by the clean task
 test-paths: ["test"]       # where to store test results
 data-paths: ["data"]       # load CSVs from this directory with `dbt seed`
 
-models:
-  facebook_ads:
-      vars:
-        fbaid: fbaid    #value of url_parameter that contains the adid
